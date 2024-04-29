@@ -1,0 +1,1 @@
+<img src="{{ asset('images/Logo_IES-JANDULA-500x500.png') }}" alt="Descripción de la imagen"
