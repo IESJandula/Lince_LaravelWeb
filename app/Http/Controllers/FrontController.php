@@ -37,11 +37,12 @@ class FrontController extends Controller
         $patrocinadores = Patrocinadores::all();
         $medios = Medios::all();
         $contadores = Contadores::all();
+        $blogs = Blog::latest()->take(3)->get();
 
         //PASAR ELEMENTOS PARA EL SLIDER
         $ultimoVehiculo = Vehiculos::latest()->first();
 
-        return view('front.inicio', compact('vehiculos', 'medios', 'pilotos', 'equios', 'patrocinadores', 'ultimoEquipo', 'contadores', 'ultimoVehiculo'));
+        return view('front.inicio', compact('vehiculos', 'medios', 'pilotos', 'equios', 'patrocinadores', 'ultimoEquipo', 'contadores', 'ultimoVehiculo', 'blogs'));
     }
 
     //PÁGINA DE VEHÍCULOS

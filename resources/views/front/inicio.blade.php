@@ -39,6 +39,7 @@
             </div>
         </div>
         <br>
+        <!--SECCION DE VEHICULOS-->
         <div class="row justify-content-center">
             <div class="col-md-12 col-10">
                 <!-- Contenido de la primera columna -->
@@ -69,6 +70,86 @@
             </div>
         </div>
     </div>
+    <!--SECCION DE EN DIRECTO-->
+    <div class="fondo-gris pb-4">
+        <div class="custom-margin">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <!-- Contenido de la primera columna -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                                <img src="{{ asset('assets/img/sobre_nosotros.jpg') }}" class="imagenes img-fluid"
+                                        alt="en-directo" style="max-width: 90%; height: auto;">
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="text-white">Eco-Jándula Team en directo</h2>
+                            <p class="text-white">
+                                Sumérgete en la emocionante competición de la Shell Eco-Marathon Europe
+                                {{ $contador->anio_competicion }} con nuestra plataforma de
+                                telemetría en línea. Sigue minuto a minuto la competición, interactúa con otros
+                                entusiastas y comparte la emoción de la carrera más ecológica del mundo.</p>
+                            <p class="text-white">Únete ahora y vive la innovación verde al máximo. Descubre cómo nuestro
+                                equipo
+                                trabaja incansablemente para optimizar la eficiencia de nuestro vehículo y competir por la
+                                gloria
+                                en esta carrera hacia un futuro más sostenible. ¡Acompáñanos en esta emocionante travesía!
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="row text-center mt-3">
+                        <div class="col-md-6 mx-auto">
+                            <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
+                            <a href="{{ url('#') }}" class="boton-negro btn-block"><i
+                                    class="fa-solid fa-circle text-danger"></i> En directo </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SECCION DE BLOG-->
+    <div class="row justify-content-center">
+        <div class="custom-margin">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <!-- Contenido de la primera columna -->
+                    <h2 class="text-center">Últimas publicaciones</h2>
+                    <div class="row p-4 justify-content-center">
+                        @foreach ($blogs as $blog)
+                            <div class="col-md-3 mt-4">
+                                <a href="{{ url('blog/' . $blog->id) }}">
+                                    <div class="card mb-5 h-100"> <!-- Añade la clase h-100 aquí -->
+                                        @foreach ($medios as $medio)
+                                            @if ($blog->id_imagen == $medio->id)
+                                                <img src="{{ asset('assets/uploads/' . $medio->nombre) }}"
+                                                    class="card-img-top img-fluid" alt="{{ $medio->nombre }}"
+                                                    style="width: auto; height: 200px; object-fit: cover;">
+                                            @endif
+                                        @endforeach
+                                        <div class="card-body">
+                                            <span class="badge rounded-pill bg-custom mb-2">Blog</span>
+                                            <h4 class="card-title">{{ $blog->titulo }}</h4>
+                                            @php
+                                                $fecha_publicacion = \Carbon\Carbon::createFromFormat(
+                                                    'Y-m-d',
+                                                    $blog->fecha_publicacion,
+                                                );
+                                            @endphp
+                                            <p class="card-text">Fecha de publicación:
+                                                {{ $fecha_publicacion->format('d-m-Y') }}</p>
+                                            <!-- Cambio de formato de fecha -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SECCION DE PILOTOS-->
     <div class="fondo-gris pb-4">
         <div class="custom-margin">
             <div class="row justify-content-center">
@@ -87,7 +168,7 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <h5 class="text-center mt-1">{{ $piloto->nombre }}</h5>
+                                <h5 class="text-center mt-1 text-white">{{ $piloto->nombre }}</h5>
                             </div>
                         @endforeach
                     </div>
@@ -101,6 +182,7 @@
             </div>
         </div>
     </div>
+    <!--SECCION DE PATROCINADORES-->
     <div class="row justify-content-center">
         <div class="custom-margin">
             <div class="row justify-content-center">
@@ -127,6 +209,7 @@
             </div>
         </div>
     </div>
+    <!--CONTADOR-->
     <script>
         function updateCountdown(counter) {
             let now = new Date().getTime();
