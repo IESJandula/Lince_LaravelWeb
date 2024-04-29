@@ -14,8 +14,95 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    # Avoid indexing specific URLs (EVITAR INDEXAR)
+    RewriteRule ^login - [L]
+    RewriteRule ^register - [L]
+    RewriteRule ^escritorio - [L]
+    RewriteRule ^profile - [L]
+    RewriteRule ^logout - [L]
+
+    # 1 Entradas
+    RewriteRule ^nueva-entrada - [L]
+    RewriteRule ^insertar-entrada - [L]
+    RewriteRule ^editar-entrada - [L]
+    RewriteRule ^actualizar-entrada - [L]
+
+    # 2 Medios
+    RewriteRule ^medios - [L]
+    RewriteRule ^addMedios - [L]
+    RewriteRule ^medios - [L]
+
+    # 3 Vehiculos
+    RewriteRule ^entradas-vehiculos - [L]
+    RewriteRule ^nuevo-vehiculo - [L]
+    RewriteRule ^insertar-vehiculo - [L]
+    RewriteRule ^editar-vehiculo - [L]
+    RewriteRule ^actualizar-vehiculo - [L]
+    RewriteRule ^eliminar-vehiculo - [L]
+
+    # 4 Equipos
+    RewriteRule ^entradas-equipos - [L]
+    RewriteRule ^nuevo-equipo - [L]
+    RewriteRule ^insertar-equipo - [L]
+    RewriteRule ^editar-equipo - [L]
+    RewriteRule ^actualizar-equipo - [L]
+    RewriteRule ^eliminar-equipo - [L]
+
+    # 5 Dorsales
+    RewriteRule ^entradas-dorsales - [L]
+    RewriteRule ^nuevo-dorsal - [L]
+    RewriteRule ^insertar-dorsal - [L]
+    RewriteRule ^editar-dorsal - [L]
+    RewriteRule ^actualizar-dorsal - [L]
+    RewriteRule ^eliminar-dorsal - [L]
+
+    # 6 Patrocinadores
+    RewriteRule ^entradas-patrocinadores - [L]
+    RewriteRule ^nuevo-patrocinador - [L]
+    RewriteRule ^insertar-patrocinador - [L]
+    RewriteRule ^editar-patrocinador - [L]
+    RewriteRule ^actualizar-patrocinador - [L]
+    RewriteRule ^eliminar-patrocinador - [L]
+
+    # 7 Pilotos
+    RewriteRule ^entradas-pilotos - [L]
+    RewriteRule ^nuevo-piloto - [L]
+    RewriteRule ^insertar-piloto - [L]
+    RewriteRule ^editar-piloto - [L]
+    RewriteRule ^actualizar-piloto - [L]
+    RewriteRule ^eliminar-piloto - [L]
+
+    # 8 Reconocimientos
+    RewriteRule ^entradas-reconocimientos - [L]
+    RewriteRule ^nuevo-reconocimiento - [L]
+    RewriteRule ^insertar-reconocimiento - [L]
+    RewriteRule ^editar-reconocimiento - [L]
+    RewriteRule ^actualizar-reconocimiento - [L]
+    RewriteRule ^eliminar-reconocimiento - [L]
+
+    # 9 Estadísticas
+    RewriteRule ^estadisticas - [L]
+
+    # 10 Configuracion
+
+        # 10.1 Usuarios
+        RewriteRule ^configuracion/usuarios - [L]
+        RewriteRule ^configuracion/nuevo-usuario - [L]
+        RewriteRule ^configuracion/agregar-usuario  - [L]
+        RewriteRule ^configuracion/editar-usuario - [L]
+        RewriteRule ^configuracion/actualizar-usuario - [L]
+        RewriteRule ^configuracion/eliminar-usuario - [L]
+
+        # 10.2 Contador
+        RewriteRule ^configuracion/contador - [L]
+        RewriteRule ^actualizar-contador - [L]
+
+        # 10.3 Acerca de
+        RewriteRule ^configuracion/acerca-de - [L]
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
