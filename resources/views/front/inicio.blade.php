@@ -101,7 +101,7 @@
                         <div class="col-md-6 mx-auto">
                             <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
                             <a href="{{ url('#') }}" class="boton-negro btn-block"><i
-                                    class="fa-solid fa-circle text-danger"></i> En directo </a>
+                                    class="fa-solid fa-circle text-danger" target="_blank"></i> En directo </a>
                         </div>
                     </div>
                 </div>
