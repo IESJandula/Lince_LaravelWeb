@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*MARGENES DEL CUERPO*/
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.no-padding {
+    padding: 0;
+    margin: 0;
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////  ESTILOS DEL FRONTEND  ///////////////////////*/
+/*////////////////////////////////////////////////////////////////////////*/
+
+/*COLORES DEL MENU///////////////////////////////////////////////////////////*/
+.bg-custom,
+.dropdown-menu {
+    background-color: #171616;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+/*TAMAÑO DEL ICONO DEL MENU///////////////////////////////////////////////*/
+.iconoLince {
+    width: 250px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.iconoLince-footer {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+
+}
+
+/*Z-index submenu inicio*/
+.submenuInicio {
+    z-index: 9999 !important;
+}
+
+/*TAMAÑO DEL CARRUSEL*/
+.tamanioCarrusel {
+    width: 100%;
+    height: 50vh;
+}
+
+.tamanioCarrusel .carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.tamanioCarrusel .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%;
+    /* Utiliza el 100% de la altura del contenedor padre */
+    object-fit: cover;
+    /* Ajusta la imagen para que cubra todo el espacio del contenedor */
+}
+
+/*MARGEN MENU REDES SOCIALES*/
+.menuRedesSociales {
+    padding-left: 3%;
+}
+
+/*MARGENES DE TODAS LAS PAGINAS*/
+.custom-margin {
+    margin: 0 10%;
+    padding-top: 2%;
+}
+
+.imagenes {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 2%;
+}
+
+/*COLOR GRIS DE FONDO*/
+.fondo-gris {
+    background-color: #171616;
+}
+
+/*BOTONES*/
+.boton-negro {
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    /* Ajusta el padding para hacer el botón más grande */
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: white;
+}
+
+.boton-negro:hover {
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    /* Ajusta el padding para hacer el botón más grande */
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: black;
+}
+
+/*BOTON BLANCO*/
+.boton-blanco:hover {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: black;
+}
+
+.boton-blanco {
+    background-color: black;
+    border-radius: 0.25rem;
+    padding: 0.5% 3%;
+    /* Ajusta el padding para hacer el botón más grande */
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: white;
+}
+
+.boton-blanco-inicio {
+    background-color: black;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    /* Ajusta el padding para hacer el botón más grande */
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: white;
+}
+
+.boton-blanco-inicio:hover {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    /* Ajusta el tamaño de la fuente para hacer el botón más grande */
+    color: black;
+}
+
+/*Página de Sobre nosotros imagenes*/
+.igual-tamaño {
+    width: auto;
+    /* ajusta según tu necesidad */
+    height: 200px;
+    /* ajusta según tu necesidad */
+}
+
+/*DORSALES*/
+.cajaDorsales {
+    width: 10%;
+    height: 100%;
+}
+
+/*////////////////VISTAS RESPONSIVE////////////////*/
+
+/* Para tabletas */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Estilos específicos para tabletas */
+
+    /*MENU PRINCIPAL*/
+    .menuPrincipal li {
+        padding-left: 2%;
+    }
+
+    .menuRedesSociales {
+        display: none;
+    }
+}
+
+/* Para dispositivos móviles */
+@media only screen and (max-width: 767px) {
+    /* Estilos específicos para dispositivos móviles */
+
+    /*MENU PRINCIPAL*/
+    .menuPrincipal li {
+        padding-left: 2%;
+    }
+
+    .menuRedesSociales {
+        display: none;
+    }
+
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////  ESTILOS DEL BACKEND  ////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////*/
+
+/*IMAGENES DE MEDIOS*/
+.imagenesMedios {
+    width: 100%;
+    height: 130px;
+    /* Establece la altura deseada */
+    object-fit: cover;
+    /* Escala la imagen para cubrir todo el contenedor */
+}
+
+.menuBackend .menu-link {
+    color: white;
+}
+
+.menuBackend .menu-link:hover {
+    background-color: rgb(0, 101, 156);
+    color: white;
+}
+
+/*IMAGENES DE AÑADIR AL BLOG*/
+.imagenesBlog {
+    width: 100%;
+    height: 90px;
+    /* Establece la altura deseada */
+    object-fit: cover;
+    /* Escala la imagen para cubrir todo el contenedor */
+}
+
+.btn-primary {
+    background-color: rgb(0, 101, 156);
+    border-color: rgb(0, 101, 156);
+}
+
+/*TABLA DE RECONOCIMIENTOS ANCHO COLUMNA NOMBRE*/
+.maximoColumna {
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+        //Sistema carpeta de uploads
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('assets/uploads'), // Ruta de la carpeta uploads
+            'url' => env('APP_URL').'/assets/uploads', // URL de acceso a los archivos en esta carpeta
+            'visibility' => 'public', // La visibilidad de los archivos (public o private)
+        ],
+
     ],
 
     /*

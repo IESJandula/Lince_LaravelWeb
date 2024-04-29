@@ -1,176 +1,153 @@
 <?php
 
-use App\Models\Dispositivo;
-use App\Http\Controllers\DispositivoController;
-use App\Http\Controllers\IncidenciasController;
-use App\Http\Controllers\UbicacionesController;
-use App\Http\Controllers\AdministradoresController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VehiculosController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DorsalesController;
+use App\Http\Controllers\EquiposController;
+use App\Http\Controllers\EscritorioController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\MediosController;
+use App\Http\Controllers\PatrocinadoresController;
+use App\Http\Controllers\PilotosController;
+use App\Http\Controllers\ReconocimientosController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\VisitsController;
+use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+/*////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////  RUTAS DEL FRONTEND  //////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////*/
+
+Route::get('/', [FrontController::class, 'verHome'])->name('front.show');
+
+//Submenu conocenos
+Route::get('/conocenos/sobre-nosotros', [FrontController::class, 'verConocenos'])->name('frontConocenos.show');
+Route::get('/conocenos/equipos', [FrontController::class, 'verEquipo'])->name('frontEquipo.show');
+Route::get('/conocenos/pilotos', [FrontController::class, 'verPilotos'])->name('frontPilotos.show');
+Route::get('/conocenos/dorsales', [FrontController::class, 'verDorsales'])->name('frontDorsales.show');
+
+Route::get('/vehiculos', [FrontController::class, 'verVehiculos'])->name('frontVehiculos.show');
+Route::get('/patrocinadores', [FrontController::class, 'verPatrocinadores'])->name('frontPatrocinadores.show');
+
+Route::get('/blog', [FrontController::class, 'verBlog'])->name('frontBlog.show');
+Route::get('/blog/{slug}', [FrontController::class, 'verPost'])->name('frontPost.show');
+
+Route::get('/reconocimientos', [FrontController::class, 'verReconocimientos'])->name('frontReconocimientos.show');
+
+Route::get('/contacto', [FrontController::class, 'verContacto'])->name('frontContacto.show');
+Route::post('/enviar-formulario', [FrontController::class, 'enviarContacto'])->name('frontContacto.send');
 
 
-Route::get('/', function () {
-    return view('dashboard');
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////  RUTAS DEL BACKEND  //////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////*/
+Route::middleware('auth')->group(function () {
+    //Escritorio
+    Route::get('/escritorio', [EscritorioController::class, 'homeBackend'])->name('homeBackend.show');
+   
+    //ENTRADAS DEL BLOG
+    Route::get('/entradas', [BlogController::class, 'backendVerPosts'])->name('backendBlog.show');
+    Route::get('/nueva-entrada', [BlogController::class, 'newEntrada']);
+    Route::post('/insertar-entrada', [BlogController::class, 'addNewPost']);
+    Route::get('/editar-entrada/{id}', [BlogController::class, 'editMedio'])->name('medios.edit');
+    Route::post('/actualizar-entrada/{id}', [BlogController::class, 'updateMedio'])->name('medios.update');
+    Route::get('/eliminar-entrada/{id}', [BlogController::class, 'deleteMedio'])->name('entradas.delete');
+    
+    //MEDIOS
+    Route::get('/medios', [MediosController::class, 'viewMedios'])->name('backendMedios.view');
+    Route::post('/addMedios', [MediosController::class, 'newMedio']);
+    Route::delete('/medios/{id}', [MediosController::class, 'deleteMedio'])->name('medios.delete');
+
+    //VEHICULOS
+    Route::get('/entradas-vehiculos', [VehiculosController::class, 'backendVerVehiculos'])->name('backendVehiculos.show');
+    Route::get('/nuevo-vehiculo', [VehiculosController::class, 'newVehiculo']);
+    Route::post('/insertar-vehiculo', [VehiculosController::class, 'addNewVehiculo']);
+    Route::get('/editar-vehiculo/{id}', [VehiculosController::class, 'editVehiculo'])->name('vehiculos.edit');
+    Route::post('/actualizar-vehiculo/{id}', [VehiculosController::class, 'updateVehiculo'])->name('vehiculos.update');
+    Route::get('/eliminar-vehiculo/{id}', [VehiculosController::class, 'deleteMedio'])->name('vehiculos.delete');
+
+    //EQUIPOS
+    Route::get('/entradas-equipos', [EquiposController::class, 'backendVerEquipos'])->name('backendEquipos.show');
+    Route::get('/nuevo-equipo', [EquiposController::class, 'newEquipo']);   
+    Route::post('/insertar-equipo', [EquiposController::class, 'addNewEquipo']);
+    Route::get('/editar-equipo/{id}', [EquiposController::class, 'editEquipo'])->name('equipos.edit');
+    Route::post('/actualizar-equipo/{id}', [EquiposController::class, 'updateEquipo'])->name('equipos.update');
+    Route::get('/eliminar-equipo/{id}', [EquiposController::class, 'deleteEquipo'])->name('equipos.delete');
+    
+    //DORSALES
+    Route::get('/entradas-dorsales', [DorsalesController::class, 'backendVerDorsales'])->name('backendDorsales.show');
+    Route::get('/nueva-dorsal', [DorsalesController::class, 'newDorsal']);
+    Route::post('/insertar-dorsal', [DorsalesController::class, 'addNewDorsal']);
+    Route::get('/editar-dorsal/{id}', [DorsalesController::class, 'editDorsal'])->name('dorsales.edit');
+    Route::post('/actualizar-dorsal/{id}', [DorsalesController::class, 'updateDorsal'])->name('dorsales.update');
+    Route::get('/eliminar-dorsal/{id}', [DorsalesController::class, 'deleteDorsal'])->name('dorsales.delete');
+
+    //PATROCINADORES
+    Route::get('/entradas-patrocinadores', [PatrocinadoresController::class, 'backendVerPatrocinadores'])->name('backendPatrocinadores.show');
+    Route::get('/nuevo-patrocinador', [PatrocinadoresController::class, 'newPatrocinador']);
+    Route::post('/insertar-patrocinador', [PatrocinadoresController::class, 'addNewPatrocinador']);
+    Route::get('/editar-patrocinador/{id}', [PatrocinadoresController::class, 'editPatrocinador'])->name('patrocinadores.edit');
+    Route::post('/actualizar-patrocinador/{id}', [PatrocinadoresController::class, 'updatePatrocinador'])->name('patrocinadores.update');
+    Route::get('/eliminar-patrocinador/{id}', [PatrocinadoresController::class, 'deletePatrocinador'])->name('patrocinadores.delete');
+    
+    //PILOTOS
+    Route::get('/entradas-pilotos', [PilotosController::class, 'backendVerPilotos'])->name('backendPilotos.show');
+    Route::get('/nuevo-piloto', [PilotosController::class, 'newPiloto']);
+    Route::post('/insertar-piloto', [PilotosController::class, 'addNewPiloto']);
+    Route::get('/editar-piloto/{id}', [PilotosController::class, 'editPiloto'])->name('pilotos.edit');
+    Route::post('/actualizar-piloto/{id}', [PilotosController::class, 'updatePiloto'])->name('pilotos.update');
+    Route::get('/eliminar-piloto/{id}', [PilotosController::class, 'deletePiloto'])->name('pilotos.delete');
+    
+    //RECONOCIMIENTOS
+    Route::get('/entradas-reconocimientos', [ReconocimientosController::class, 'backendVerReconocimientos'])->name('backendReconocimientos.show');
+    Route::get('/nuevo-reconocimiento', [ReconocimientosController::class, 'newReconocimiento']);
+    Route::post('/insertar-reconocimiento', [ReconocimientosController::class, 'addNewReconocimiento']);
+    Route::get('/editar-reconocimiento/{id}', [ReconocimientosController::class, 'editReconocimiento'])->name('reconocimientos.edit');
+    Route::post('/actualizar-reconocimiento/{id}', [ReconocimientosController::class, 'updateReconocimiento'])->name('reconocimientos.update');
+    Route::get('/eliminar-reconocimiento/{id}', [ReconocimientosController::class, 'deleteReconocimiento'])->name('reconocimientos.delete');
+
+    //ESTADISTICAS
+    Route::get('/estadisticas', [VisitsController::class, 'visitsChart'])->name('estadisticas.show');
+
+
+    //CONFIGURACION
+
+        //USUARIOS
+        Route::get('/configuracion/usuarios', [UsuariosController::class, 'listarAdministradores'])->name('usuarios.show');
+        Route::get('/configuracion/nuevo-usuario', [UsuariosController::class, 'nuevoAdministradores'])->name('usuarios.new');
+        Route::post('/configuracion/agregar-usuario', [UsuariosController::class, 'agregarAdministrador'])->name('usuarios.add');
+        Route::get('/configuracion/editar-usuario/{id}', [UsuariosController::class, 'editarAdministrador'])->name('usuarios.edit');
+        Route::post('/configuracion/actualizar-usuario/{id}', [UsuariosController::class, 'actualizarAdministrador'])->name('usuarios.update');
+        Route::get('/configuracion/eliminar-usuario/{id}', [UsuariosController::class, 'eliminarAdministrador'])->name('usuarios.delete');
+
+        //CONTADOR
+        Route::get('/configuracion/contador', [ConfigController::class, 'contador'])->name('contador.show');
+        Route::post('/actualizar-contador/{id}', [ConfigController::class, 'updateContador'])->name('contador.update');
+
+        //A CERCA DE
+        Route::get('/configuracion/acerca-de', [ConfigController::class, 'acercaDe'])->name('acercaDe.show');
+});
+
+/*////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////  OTRAS RUTAS GENERADAS  //////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////*/
+Route::get('/dashboard', function () {
+    return view('backend.home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
 Route::delete('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-
-// Grupo de rutas para DispositivoController con middleware 'auth'
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dispositivos', [DispositivoController::class, 'list']);
-    Route::get('/dispositivos-averiados', [DispositivoController::class, 'listarAveriados'])->name('listarAveriados');
-    Route::get('/reparar/{id}', [DispositivoController::class, 'reparar'])->name('reparar');
-    Route::get('/desechar/{id}', [DispositivoController::class, 'desechar'])->name('desechar');
-    Route::get('/filtrar-por-tipo', [DispositivoController::class, 'filtrarPorTipo'])->name('filtrar-por-tipo');
-    Route::get('/filtrar-por-tipo-desechados', [DispositivoController::class, 'filtrarPorTipoDesechados'])->name('filtrar-por-tipo-desechados');
-
-
-    Route::get('/asignar-ubicacion', [DispositivoController::class, 'listarDispositivosUbicados'])->name('asignar-ubicacion');
-    Route::get('/asignar-ubicacion-nueva', [DispositivoController::class, 'asignarUbicacion'])->name('asignar-ubicacion-nueva');
-    Route::get('/ver-equipos-desechados', [DispositivoController::class, 'listarDesechados'])->name('ver-equipos-desechados');
-    Route::get('/stock', [DispositivoController::class, 'listar']);
-    Route::get('/nuevo-dispositivo', [DispositivoController::class, 'addDispositivos']);
-    Route::post('/addNew', [DispositivoController::class, 'insertDispositivos']);
-    Route::get('/modificar-dispositivo/{id}', [DispositivoController::class, 'editarDispositivos']);
-    Route::post('/updateDispositivoStock/{id}', [DispositivoController::class, 'updateDispositivos']);
-    Route::get('/eliminar-dispositivo/{id}', [DispositivoController::class, 'eliminarDispositivo']);
-    Route::get('/mostrar-tipos-dispositivos', [DispositivoController::class, 'mostrarTiposDispositivos'])->name('mostrar.tipos.dispositivos');
-    Route::get('/mostrar-tipos-dispositivos', [DispositivoController::class, 'mostrarTiposDispositivos'])->name('mostrar.tipos.dispositivos');
-    Route::post('/agregar-equipo', [DispositivoController::class, 'agregarEquipo'])->name('agregar.equipo');    
-    Route::delete('/eliminar-tipos-dispositivos', [DispositivoController::class, 'eliminarTiposDispositivos'])->name('eliminar.tipos.dispositivos');
-    Route::post('/editar-equipo', [DispositivoController::class, 'editarEquipo'])->name('editar.equipo');
-    Route::post('/guardar-cambios', [DispositivoController::class, 'guardarCambios'])->name('guardar.cambios');
-    Route::get('/dispositivos/filtrar-por-ubicacion', [DispositivoController::class, 'filtrarPorUbicacion'])->name('filtrar_por_ubicacion');
-});
-
-
-// Rutas para UbicacionesController
-Route::middleware('auth')->group(function () {
-    Route::get('/ubicaciones', [UbicacionesController::class, 'ubicaciones'])->name('dispositivos.ubicaciones');
-    Route::get('/ubicaciones/{ubicacion}/edit', [UbicacionesController::class, 'edit'])->name('ubicaciones.edit');
-    Route::delete('/ubicaciones/{ubicacion}', [UbicacionesController::class, 'destroy'])->name('ubicaciones.destroy');
-    Route::post('/crearUbicacion', [UbicacionesController::class, 'crearUbicacion']);
-    Route::get('ubicaciones/{id}/edit', [UbicacionesController::class, 'edit'])->name('ubicaciones.edit');
-    Route::put('ubicaciones/{id}', [UbicacionesController::class, 'update'])->name('ubicaciones.update');
-    Route::post('/filtrarPorUbicacion', [UbicacionesController::class, 'filtrarPorUbicacion'])->name('ubicaciones.filtrarPorUbicacion');
-    Route::delete('ubicaciones/{id}', [UbicacionesController::class, 'destroy'])->name('ubicaciones.destroy');
-});
-
-// Rutas para IncidenciasController
-Route::middleware('auth')->group(function () {
-    Route::get('/mantenimientos', [IncidenciasController::class, 'list'])->name('mantenimientos.list');
-    Route::post('/mantenimientos', [IncidenciasController::class, 'store'])->name('mantenimientos.store');
-    Route::get('mantenimientos/{id}/edit', [IncidenciasController::class, 'edit'])->name('mantenimientos.edit');
-    Route::put('mantenimientos/{id}', [IncidenciasController::class, 'update'])->name('mantenimientos.update');
-    Route::delete('/mantenimientos/{id}', [IncidenciasController::class, 'destroy'])->name('mantenimientos.destroy');
-});
-
-
-Route::post('/agregar-equipo', [DispositivoController::class, 'agregarEquipo'])
-    ->name('agregar.equipo');
-
-
-Route::delete('/eliminar-tipos-dispositivos', [DispositivoController::class, 'eliminarTiposDispositivos'])
-    ->name('eliminar.tipos.dispositivos');
-
-Route::post('/editar-equipo', [DispositivoController::class, 'editarEquipo'])->name('editar.equipo');
-
-Route::post('/guardar-cambios', [DispositivoController::class, 'guardarCambios'])
-    ->name('guardar.cambios');
-
-
-/* Rutas para metodo ubicaciones*/
-Route::get('/ubicaciones', [UbicacionesController::class, 'ubicaciones'])->name('dispositivos.ubicaciones');
-
-Route::get('/ubicaciones/{ubicacion}/edit', [UbicacionesController::class, 'edit'])->name('ubicaciones.edit');
-
-Route::delete('/ubicaciones/{ubicacion}', [UbicacionesController::class, 'destroy'])->name('ubicaciones.destroy');
-
-Route::post('/crearUbicacion', [UbicacionesController::class, 'crearUbicacion']);
-
-Route::put('ubicaciones/{id}', [UbicacionesController::class, 'update'])->name('ubicaciones.update');
-
-Route::post('/filtrarPorUbicacion', [UbicacionesController::class, 'filtrarPorUbicacion'])->name('ubicaciones.filtrarPorUbicacion');
-
-Route::match(['get', 'post'], '/mostrarEquiposPorUbicacion', [UbicacionesController::class, 'mostrarEquiposPorUbicacion'])->name('ubicaciones.mostrarEquiposPorUbicacion');
-
-Route::delete('ubicaciones/{id}', [UbicacionesController::class, 'destroy'])->name('ubicaciones.destroy');
-
-
-/*Parte para el controlador de Incidencias*/
-
-/*Estas las hice pero al final no se usan por un error de comunicacion*/
-Route::get('/mantenimientos', [IncidenciasController::class, 'list'])->name('mantenimientos.list');
-
-Route::post('/mantenimientos', [IncidenciasController::class, 'store'])->name('mantenimientos.store');
-
-Route::get('mantenimientos/{id}/edit', [IncidenciasController::class, 'edit'])->name('mantenimientos.edit');
-
-Route::put('mantenimientos/{id}', [IncidenciasController::class, 'update'])->name('mantenimientos.update');
-
-Route::delete('/mantenimientos/{id}', [IncidenciasController::class, 'destroy'])->name('mantenimientos.destroy');
-
-
-
-
-
-
-/*Fin controlador de incidencias*/
-
-
-//CONTROLADOR ADMINISTRADORES
-
-// Ruta para mostrar todos los administradores
-Route::get('/administradores', [AdministradoresController::class, 'listarAdministradores'])->name('administradores.listar');
-
-// Ruta para agregar un nuevo administrador
-Route::post('/administradores', [AdministradoresController::class, 'agregarAdministrador'])->name('administradores.agregar');
-
-// Ruta para eliminar un administrador
-Route::delete('/administradores', [AdministradoresController::class, 'eliminarAdministrador'])->name('administradores.eliminar');
-
-// Rutas para AdministradoresController
-Route::middleware('auth')->group(function () {
-    Route::get('/administradores', [AdministradoresController::class, 'listarAdministradores'])->name('administradores.listar');
-    Route::post('/administradores', [AdministradoresController::class, 'agregarAdministrador'])->name('administradores.agregar');
-    Route::delete('/administradores', [AdministradoresController::class, 'eliminarAdministrador'])->name('administradores.eliminar');
-});
-
-// Rutas para el controlador de logs
-Route::middleware('auth')->group(function () {
-    Route::get('/logs', [AdministradoresController::class, 'generalActivity'])->name('logs.logs');
-});
-
-
-//Dar de alta una nueva incidencia en el sistema
-Route::get('/nuevaIncidencia', function () {
-    return view('incidencias.nuevaIncidencia');
-})->name('nuevaIncidencia');
-
-//RUTA NUEVA INCIDENCIA
-
-Route::get('/incidencias',  [IncidenciasController::class, 'nuevaIncidencia'])->name('incidencias');
-Route::post('/incidenciaNueva',  [IncidenciasController::class, 'addNuevaIncidencia'])->name('incidenciaNueva');
-
-Route::get('/nuevaIncidencia', [IncidenciasController::class, 'create'])->name('mantenimientos.create');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
