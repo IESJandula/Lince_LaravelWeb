@@ -1,12 +1,12 @@
 @extends('comunes.masterBackend')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @section('title', 'Estadísticas')
 
 @section('content')
     <!--Mostrando las graficas mensuales y anuales-->
     <h1 class="p-4">Estadísticas</h1>
-    <div class="container">
-        <div class="row">
+    <div class="container" id="contenido">
+        <div class="row" id="contenido1">
             <div class="col-md-6">
                 <div class="card mx-3">
                     <div class="card-body">
@@ -26,17 +26,18 @@
         </div>
 
         <div class="row mt-3">
-            <div class="col-md-6">
+            <div class="col-md-6" id="contenido2">
                 <div class="card mx-3">
                     <div class="card-body">
                         <h2 class="card-title">Visitas semanales</h2>
-                        <h5>Semana del {{ $startOfWeek }} al {{ $endOfWeek }}</h5>
+                        <h5>Semana del <span class="badge btn-primary h5">{{ $startOfWeek }}</span> al <span
+                                class="badge btn-primary h5">{{ $endOfWeek }}</span></h5>
                         <canvas id="weeklyVisitsChart" width="400" height="300"></canvas>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card mx-3">
+                <div class="card mx-3" id="contenido3">
                     <div class="card-body pb-0">
                         <h2 class="card-title">Visitas diarias y totales</h2>
                         <h4 class="card-title">Visitas hoy {{ $formattedDate }} :
@@ -50,14 +51,18 @@
                 <div class="card mx-3 my-2">
                     <div class="card-body">
                         <h2 class="card-title">Acciones</h2>
-                        <a class="btn btn-primary text-white"><i class="menu-icon fa-solid fa-download"></i>Exportar todos
-                            los registros</a>
-                        <button class="btn btn-danger" onclick="toggleVentana()"><i class="menu-icon fa-solid fa-xmark"></i>Eliminar todos
+                        <button class="btn btn-primary text-white disabled" onclick="enviarContenidosAlServidor()">
+                            <i class="menu-icon fa-solid fa-download"></i>
+                            Generar Informe
+                        </button>
+                        <button class="btn btn-danger" onclick="toggleVentana()"><i
+                                class="menu-icon fa-solid fa-xmark"></i>Eliminar todos
                             los registros</button>
                     </div>
                     <div class="card-body border border-danger border-5 p-0 mx-5 my-2 d-none" id="ventanaEliminar">
                         <h3 class="bg-danger text-white p-2 mb-0" style="border: none;">¡Atención!</h3>
-                        <p class="mx-3 my-3">Vas a eliminar todos los registros de estadísticas. Es una acción que no se puede deshacer. <br>¿Deséas eliminar todos los registros?</p>
+                        <p class="mx-3 my-3">Vas a eliminar todos los registros de estadísticas. Es una acción que no se
+                            puede deshacer. <br>¿Deséas eliminar todos los registros?</p>
                         <button class="btn btn-success text-white mx-2 my-3" onclick="toggleVentana()"><i
                                 class="menu-icon fa-solid fa-right-from-bracket"></i>Cancelar y volver</button>
                         <a class="btn btn-danger text-white mx-3 my-3"><i class="menu-icon fa-solid fa-xmark"></i>Eliminar
@@ -71,9 +76,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        // Funcion para mostrar la ventana de eliminar datos
+        // Funcion para mostrar la ventana de eliminar datos////////////////////////////////////////
         function toggleVentana() {
             var ventana = document.getElementById("ventanaEliminar");
             ventana.classList.toggle("d-none"); // Agrega o quita la clase "d-none" para mostrar u ocultar la ventana
@@ -141,7 +147,11 @@
             }
         });
 
-        //VISITAS ANUALES
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        //  VISITAS ANUALES    /////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Gráfica
         let yearlyChart = new Chart(ctxYearly, {
             type: 'bar',
             data: {
@@ -166,13 +176,27 @@
             }
         });
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        //  VISITAS SEMANALES  /////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
         let ctxWeekly = document.getElementById('weeklyVisitsChart').getContext('2d');
 
         let weeklyVisitsData = @json($weeklyVisitsData);
         let daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-        let weeklyVisits = weeklyVisitsData.map(data => data.visits);
 
-        //VISITAS SEMANALES
+        // Obtener las fechas de la semana del servidor
+        let startDate = new Date('{{ \Carbon\Carbon::parse($startOfWeek)->format('Y-m-d') }}');
+        let endDate = new Date('{{ \Carbon\Carbon::parse($endOfWeek)->format('Y-m-d') }}');
+
+        // Filtrar los datos para la semana del servidor
+        let filteredData = weeklyVisitsData.filter(data => {
+            let dataDate = new Date(data.date);
+            return dataDate >= startDate && dataDate <= endDate;
+        });
+        let weeklyVisits = filteredData.map(data => data.visits);
+
+        //Gráfica
         let weeklyChart = new Chart(ctxWeekly, {
             type: 'bar',
             data: {

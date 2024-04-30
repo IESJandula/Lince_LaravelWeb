@@ -23,8 +23,8 @@ class VisitsController extends Controller
             ->get();
 
         // DATOS PARA LA GRÁFICA DE VISITAS POR DÍA DE LA SEMANA
-        $weeklyVisitsData = Visit::selectRaw("DAYNAME(created_at) as day, COUNT(*) as visits")
-            ->groupBy('day')
+        $weeklyVisitsData = Visit::selectRaw("DATE(created_at) as date, DAYNAME(created_at) as day, COUNT(*) as visits")
+            ->groupBy('date', 'day')
             ->orderByRaw('FIELD(day, "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")')
             ->get();
 

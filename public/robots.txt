@@ -58,3 +58,4 @@ Disallow: /configuracion/eliminar-usuario
 Disallow: /configuracion/contador
 Disallow: /actualizar-contador
 Disallow: /configuracion/acerca-de
+Disallow: /generar-informe-pdf

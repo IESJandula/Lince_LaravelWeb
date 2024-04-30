@@ -15,6 +15,7 @@ use App\Http\Controllers\ReconocimientosController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\VisitsController;
+use App\Http\Controllers\InformeController;
 use Illuminate\Support\Facades\Route;
 
 /*////////////////////////////////////////////////////////////////////////////////*/
@@ -114,6 +115,7 @@ Route::middleware('auth')->group(function () {
 
     //ESTADISTICAS
     Route::get('/estadisticas', [VisitsController::class, 'visitsChart'])->name('estadisticas.show');
+    Route::get('/generar-informe-pdf', [InformeController::class, 'generarPDF'])->name('generar.pdf');
 
 
     //CONFIGURACION
