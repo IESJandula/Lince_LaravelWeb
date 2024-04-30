@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Equipo;
 use App\Models\Contadores;
 use App\Models\Visit;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class EscritorioController extends Controller
@@ -25,6 +26,12 @@ class EscritorioController extends Controller
 
         $dailyVisits = Visit::whereDate('created_at', $currentDate)->count();
 
-        return view('backend.home', compact('ultimas_entradas', 'ultimos_equipos', 'contadores','dailyVisits','formattedDate'));
+        //Obtener nombre de usuario
+        $usuarioAutenticado = Auth::user();
+            
+        // Accede al nombre de usuario
+        $nombreUsuario = $usuarioAutenticado->name;
+
+        return view('backend.home', compact('ultimas_entradas', 'ultimos_equipos', 'contadores','dailyVisits','formattedDate','nombreUsuario'));
     }
 }

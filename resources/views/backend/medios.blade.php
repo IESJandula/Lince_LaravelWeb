@@ -57,4 +57,7 @@
             </table>
         </div>
     </div>
+    <div class="mx-3">
+        @include('comunes.footerBakend')
+    </div>
 @endsection

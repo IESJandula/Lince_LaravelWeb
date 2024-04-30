@@ -49,6 +49,12 @@
         </div>
     </div>
     <div class="container mt-4">
+        <!--SECCION PARA MOSTRAR EL USUARIO QUE HA INICIADO SESION-->
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Bienvenido/a {{$nombreUsuario}}</h4>
+            </div>
+        </div>
         <div class="row">
             <!--COLUMNA 1-->
             <div class="col-md-4">

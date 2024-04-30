@@ -37,13 +37,14 @@
             </div>
             <div class="col-md-6">
                 <div class="card mx-3">
-                    <div class="card-body">
-                        <h3 class="card-title">Visitas hoy {{ $formattedDate }} :
+                    <div class="card-body pb-0">
+                        <h2 class="card-title">Visitas diarias y totales</h2>
+                        <h4 class="card-title">Visitas hoy {{ $formattedDate }} :
                             <span class="badge btn-success h3">{{ $dailyVisits }}</span>
-                        </h3>
-                        <h3 class="card-title">Visitas totales:
+                        </h4>
+                        <h4 class="card-title">Visitas totales:
                             <span class="badge btn-primary h3">{{ $totalVisits }}</span>
-                        </h3>
+                        </h4>
                     </div>
                 </div>
                 <div class="card mx-3 my-2">

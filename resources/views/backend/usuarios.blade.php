@@ -35,6 +35,9 @@
             </table>
         </div>
     </div>
+    <div class="mx-3">
+        @include('comunes.footerBakend')
+    </div>
 
     <script>
         document.getElementById("eliminarUsuario").onclick = function(event) {
