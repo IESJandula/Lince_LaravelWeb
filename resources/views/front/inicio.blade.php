@@ -8,11 +8,14 @@
         <div class="row justify-content-center">
             <div class="col-md-5 col-10"> <!-- Quita mx-2 para eliminar el margen -->
                 <!-- Contenido de la primera columna -->
-                <h1>Sobre Nosotros</h1>
-                <p>¿QUIENES SOMOS? Desarrollamos un proyecto educativo consistente en el diseño, construcción, pruebas y
+                <h1>¡Bienvenidos al Proyecto Lince!</h1>
+                <h4>¿Quienes somos? </h4>
+                <p>
+                    Desarrollamos un proyecto educativo consistente en el diseño, construcción, pruebas y
                     conducción de vehículos ecológicos con los que participamos en competiciones de vehículos eficientes de
                     bajo consumo. El equipo está formado por profesores y alumnos de 1º de Bachillerato de Ciencias y
-                    Tecnología del I.E.S. "Jándula" de Andújar (Jaén) que cursan la asignatura Tecnología Industrial.</p>
+                    Tecnología del I.E.S. "Jándula" de Andújar (Jaén) que cursan la asignatura Tecnología Industrial.
+                </p>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="justify-content-left align-items-center">
@@ -20,7 +23,8 @@
                                 <h3 class="text-center">Shell Eco-Marathon {{ $contador->anio_competicion }}</h3>
                             @endforeach
                             <!--CAJA DEL CONTADOR-->
-                            <div class="btn-primary h2 text-white p-3 mx-5 rounded text-center" id="countdown">
+                            <div class="btn-primary h2 text-white p-md-3 mx-5 rounded text-center" id="countdown">
+
 
                             </div>
                         </div>
@@ -77,9 +81,13 @@
                 <div class="col-md-12">
                     <!-- Contenido de la primera columna -->
                     <div class="row justify-content-center">
-                        <div class="col-md-6">
-                                <img src="{{ asset('assets/img/sobre_nosotros.jpg') }}" class="imagenes img-fluid"
-                                        alt="en-directo" style="max-width: 90%; height: auto;">
+                        <div class="col-md-4">
+                            <img src="{{ asset('assets/img/sobre_nosotros.jpg') }}" class="imagenes img-fluid"
+                                alt="arriba" style="width: 100%; height: 300px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-2 d-none d-md-block">
+                            <img src="{{ asset('assets/img/circuito-londres-2017.jpg') }}" class="imagenes img-fluid"
+                                alt="abajo" style="width: 100%; height: 300px; object-fit: cover;">
                         </div>
                         <div class="col-md-6">
                             <h2 class="text-white">Eco-Jándula Team en directo</h2>
@@ -94,14 +102,12 @@
                                 gloria
                                 en esta carrera hacia un futuro más sostenible. ¡Acompáñanos en esta emocionante travesía!
                             </p>
-                        </div>
-                        
-                    </div>
-                    <div class="row text-center mt-3">
-                        <div class="col-md-6 mx-auto">
-                            <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
-                            <a href="{{ url('#') }}" class="boton-negro btn-block"><i
-                                    class="fa-solid fa-circle text-danger" target="_blank"></i> En directo </a>
+                            <div class="mt-5">
+                                <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
+                                <a href="{{ url('https://gallant-elgamal.5-250-184-231.plesk.page/') }}"
+                                    class="boton-negro btn-block" target="_blank"><i
+                                        class="fa-solid fa-circle text-danger"></i> En directo </a>
+                            </div>
                         </div>
                     </div>
                 </div>

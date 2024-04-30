@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function () {
 /*////////////////////////////  OTRAS RUTAS GENERADAS  //////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////*/
 Route::get('/dashboard', function () {
-    return view('backend.home');
+    return redirect()->route('homeBackend.show');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
