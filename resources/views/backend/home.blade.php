@@ -54,7 +54,7 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2>Últimas Entradas</h2>
+                        <h2><i class="fa-solid fa-newspaper"></i> Últimas Entradas</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -79,7 +79,7 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2>Últimos Equipos</h2>
+                        <h2><i class="fa-solid fa-people-group"></i> Últimos Equipos</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -104,7 +104,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h2>Próxima Competición</h2>
+                        <h2><i class="fa-solid fa-flag-checkered"></i> Próxima Competición</h2>
                         @foreach ($contadores as $contador)
                             <h4 class="text-center">Shell Eco-Marathon {{ $contador->anio_competicion }}</h4>
                         @endforeach
@@ -116,7 +116,7 @@
                 </div>
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h2>Estadísticas</h2>
+                        <h2><i class="fa-solid fa-chart-simple"></i> Estadísticas</h2>
                         <h4 class="card-title">Nº de visitas hoy :
                             <span class="badge bg-success h3">{{$dailyVisits}}</span>
                         </h4>
@@ -126,14 +126,7 @@
             </div>
         </div>
         <!--DETALLES DE LA VERSIÓN-->
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <p>@include('comunes.version')</p>
-            </div>
-            <div class="col-md-6">
-                <p style="text-align: right;">Creada y diseñada por: Francisco Manuel Gutiérrez Carmona</p> <!-- Estilo en línea para alinear a la derecha -->
-            </div>
-        </div>
+        @include('comunes.footerBakend')
     </div>
     <script>
         function updateCountdown(counter) {

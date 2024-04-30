@@ -44,7 +44,7 @@
         </div>
         <br>
         <!--SECCION DE VEHICULOS-->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3">
             <div class="col-md-12 col-10">
                 <!-- Contenido de la primera columna -->
                 <h2 class="text-center">Todos nuestros vehículos</h2>
@@ -115,7 +115,7 @@
         </div>
     </div>
     <!--SECCION DE BLOG-->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
         <div class="custom-margin">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -152,12 +152,18 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="row text-center">
+                    <div class="col-md-6 mx-auto mb-3">
+                        <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
+                        <a href="{{ url('blog') }}" class="boton-blanco-inicio mt-4">Blog</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!--SECCION DE PILOTOS-->
     <div class="fondo-gris pb-4">
-        <div class="custom-margin">
+        <div class="custom-margin mb-3">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <!-- Contenido de la primera columna -->
