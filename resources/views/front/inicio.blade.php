@@ -23,7 +23,7 @@
                                 <h3 class="text-center">Shell Eco-Marathon {{ $contador->anio_competicion }}</h3>
                             @endforeach
                             <!--CAJA DEL CONTADOR-->
-                            <div class="btn-primary h2 text-white p-md-3 mx-5 rounded text-center" id="countdown">
+                            <div class="btn-primary h2 text-white p-md-3 p-3 mx-5 rounded text-center" id="countdown">
 
 
                             </div>
@@ -47,10 +47,10 @@
         <div class="row justify-content-center mb-3">
             <div class="col-md-12 col-10">
                 <!-- Contenido de la primera columna -->
-                <h2 class="text-center">Todos nuestros vehículos</h2>
+                <h2 class="text-center">Nuestros vehículos</h2>
                 <div class="row justify-content-center">
                     @foreach ($vehiculos as $vehiculo)
-                        <div class="col-md-2 col-4 mb-4">
+                        <div class="col-md-2 col-5 mb-4">
                             <div class="card" style="width: auto; height: 200px;">
                                 <!-- Cambia los valores de width y height según sea necesario -->
                                 @foreach ($medios as $medio)
@@ -167,10 +167,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <!-- Contenido de la primera columna -->
-                    <h2 class="text-center text-white">Todos nuestros pilotos</h2>
+                    <h2 class="text-center text-white">Nuestros pilotos</h2>
                     <div class="row justify-content-center">
                         @foreach ($pilotos as $piloto)
-                            <div class="col-md-2 col-4 mb-4">
+                            <div class="col-md-2 col-5 mb-4">
                                 <div class="card">
                                     @foreach ($medios as $medio)
                                         @if ($piloto->id_imagen == $medio->id)
