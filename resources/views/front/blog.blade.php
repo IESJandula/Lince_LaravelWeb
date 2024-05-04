@@ -41,7 +41,7 @@
         <div class="row p-4">
             @foreach ($blogs as $blog)
                 <div class="col-md-3 mt-4">
-                    <a href="{{ url('blog/' . $blog->id) }}">
+                    <a href="{{ url('blog/' . $blog->id . '/' . $blog->slug) }}">
                         <div class="card mb-5 h-100"> <!-- Añade la clase h-100 aquí -->
                             @foreach ($medios as $medio)
                                 @if ($blog->id_imagen == $medio->id)

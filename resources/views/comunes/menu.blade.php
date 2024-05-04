@@ -2,8 +2,7 @@
     <a class="navbar-brand ml-3" href="{{ url('/') }}">
         <img src="{{ asset('assets/img/icono-lince.png') }}" class="iconoLince">
     </a>
-    <button class="navbar-toggler m-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler m-5 text-white" type="button" id="navbarToggleBtn">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -14,7 +13,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Conócenos
                 </a>
-                <ul class="dropdown-menu submenuInicio" aria-labelledby="navbarDropdown1">
+                <ul class="dropdown-menu submenuInicio" aria-labelledby="navbarDropdown1" id="desplegable1">
                     <li><a class="dropdown-item text-white" href="{{ url('/conocenos/sobre-nosotros') }}">Sobre
                             nosotros</a></li>
                     <li><a class="dropdown-item text-white" href="{{ url('/conocenos/equipos') }}">Equipos</a></li>
@@ -73,3 +72,34 @@
     </div>
 </nav>
 
+<script>
+    // JavaScript para manejar el evento click en el botón del navbar
+    document.getElementById('navbarToggleBtn').addEventListener('click', function() {
+      let navbarSupportedContent = document.getElementById('navbarSupportedContent');
+      if (navbarSupportedContent.classList.contains('show')) {
+        navbarSupportedContent.classList.remove('show');
+      } else {
+        navbarSupportedContent.classList.add('show');
+      }
+    });
+
+    // Variable para controlar si el submenu 1 está desplegado o no
+    let subenuDesplegado = false;
+    // JavaScript para manejar el evento click en el submenu 1
+    document.getElementById('navbarDropdown1').addEventListener('click', function() {
+        let ulElement = document.getElementById('desplegable1');
+    
+        // Si existe la clase show en el submenu 1 eliminar clase show
+        if (subenuDesplegado==true) {
+            console.log("Clase 'show' eliminada");
+            ulElement.classList.remove('show');
+            subenuDesplegado = false;
+        }else{
+            ulElement.classList.add('show');
+            console.log("Clase 'show' agregada");
+            subenuDesplegado = true;
+        }
+        
+        
+    });
+  </script>

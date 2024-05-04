@@ -34,7 +34,7 @@ Route::get('/vehiculos', [FrontController::class, 'verVehiculos'])->name('frontV
 Route::get('/patrocinadores', [FrontController::class, 'verPatrocinadores'])->name('frontPatrocinadores.show');
 
 Route::get('/blog', [FrontController::class, 'verBlog'])->name('frontBlog.show');
-Route::get('/blog/{slug}', [FrontController::class, 'verPost'])->name('frontPost.show');
+Route::get('/blog/{id}/{slug}', [FrontController::class, 'verPost'])->name('frontPost.show');
 
 Route::get('/reconocimientos', [FrontController::class, 'verReconocimientos'])->name('frontReconocimientos.show');
 
