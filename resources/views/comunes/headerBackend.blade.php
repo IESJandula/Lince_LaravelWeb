@@ -6,7 +6,7 @@
     </div>
     
     <div class="menu-inner-shadow"></div>
-    <!--<div class="mx-4 mb-4 text-white">Bienvenido Admin</div>-->
+    <div class="mx-4 mb-4 text-white h3">Panel de Administración</div>
 
     <ul class="menu-inner py-1 menuBackend">
         <li class="menu-item">

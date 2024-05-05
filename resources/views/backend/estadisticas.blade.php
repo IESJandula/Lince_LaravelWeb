@@ -183,24 +183,37 @@
         let ctxWeekly = document.getElementById('weeklyVisitsChart').getContext('2d');
 
         let weeklyVisitsData = @json($weeklyVisitsData);
-        let daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+        let daysOfWeek = weeklyVisitsData.map(data => data.day);
+
+        // Objeto para mapear los días de la semana en inglés a español
+        const daysOfWeekSpanish = {
+            Sunday: 'Domingo',
+            Monday: 'Lunes',
+            Tuesday: 'Martes',
+            Wednesday: 'Miércoles',
+            Thursday: 'Jueves',
+            Friday: 'Viernes',
+            Saturday: 'Sábado'
+        };
+
+        // Mapear los nombres de los días de la semana en inglés a español
+        let daysOfWeekSpanishLabels = daysOfWeek.map(day => daysOfWeekSpanish[day]);
 
         // Obtener las fechas de la semana del servidor
         let startDate = new Date('{{ \Carbon\Carbon::parse($startOfWeek)->format('Y-m-d') }}');
         let endDate = new Date('{{ \Carbon\Carbon::parse($endOfWeek)->format('Y-m-d') }}');
 
-        // Filtrar los datos para la semana del servidor
-        let filteredData = weeklyVisitsData.filter(data => {
-            let dataDate = new Date(data.date);
-            return dataDate >= startDate && dataDate <= endDate;
+        // Crear un array de visitas por día de la semana
+        let weeklyVisits = daysOfWeek.map(day => {
+            let dataForDay = weeklyVisitsData.find(data => data.day === day);
+            return dataForDay ? dataForDay.visits : 0;
         });
-        let weeklyVisits = filteredData.map(data => data.visits);
 
-        //Gráfica
+        // Gráfica
         let weeklyChart = new Chart(ctxWeekly, {
             type: 'bar',
             data: {
-                labels: daysOfWeek,
+                labels: daysOfWeekSpanishLabels,
                 datasets: [{
                     label: 'Visitas diarias',
                     data: weeklyVisits,
@@ -217,7 +230,7 @@
                             stepSize: 1
                         }
                     }]
-                },
+                }
             }
         });
     </script>

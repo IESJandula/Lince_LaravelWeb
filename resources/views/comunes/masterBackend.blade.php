@@ -102,19 +102,7 @@
 
     <!--JS PARA PLEGAR Y DESPLEGAR EL MENU-->
     <script>
-      // Seleccionar el botón del navbar y la columna del menú
-      const navbarToggleBtn = document.getElementById('navbarToggleBtn');
-      const columnaMenu = document.getElementById('columnaMenu');
-  
-      // Añadir un evento de clic al botón del navbar
-      navbarToggleBtn.addEventListener('click', function() {
-          // Alternar la clase que controla la visibilidad del menú
-          if (columnaMenu.classList.contains('hidden')) {
-              columnaMenu.classList.remove('hidden');
-          } else {
-              columnaMenu.classList.add('hidden');
-          }
-      });
+    
   </script>
   </body>
 </html>
