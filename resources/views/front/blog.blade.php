@@ -6,7 +6,7 @@
     <style>
         .imagenCabeceraBlog {
             position: relative;
-            background-image: url('{{ asset('assets/img/equipo_2014.jpg') }}');
+            background-image: url('{{ asset('assets/img/banner-blog.jpg') }}');
             background-size: cover;
             background-position: center;
         }

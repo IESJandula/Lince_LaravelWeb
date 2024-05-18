@@ -21,7 +21,7 @@
                                     @if ($blog->id_imagen == $medio->id)
                                         <img src="{{ asset('assets/uploads/' . $medio->nombre) }}"
                                             class="card-img-top card-img-bottom img-fluid" alt="{{ $medio->nombre }}"
-                                            style="width: 100%; height: 400px; object-fit: cover;">
+                                            style="width: 100%; object-fit: cover;">
                                     @endif
                                 @endforeach
                             </div>
@@ -45,6 +45,12 @@
                                             style="width: 100%; height: 400px; object-fit: cover;">
                                     @endif
                                 @endforeach
+                            </div>
+                        </div>
+                        <div class="row text-left">
+                            <div class="col-md-12 mx-auto mb-3">
+                                <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
+                                <a href="{{ url('blog') }}" class="boton-blanco-inicio mt-4"><i class="menu-icon fa-solid fa-arrow-left"></i> Volver</a>
                             </div>
                         </div>
                     </div>

@@ -104,7 +104,7 @@
                             </p>
                             <div class="mt-5">
                                 <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
-                                <a href="{{ url('https://gallant-elgamal.5-250-184-231.plesk.page/') }}"
+                                <a href="{{ url('https://priceless-heisenberg.194-164-171-3.plesk.page/') }}"
                                     class="boton-negro btn-block" target="_blank"><i
                                         class="fa-solid fa-circle text-danger"></i> En directo </a>
                             </div>
@@ -170,13 +170,13 @@
                     <h2 class="text-center text-white">Nuestros pilotos</h2>
                     <div class="row justify-content-center">
                         @foreach ($pilotos as $piloto)
-                            <div class="col-md-2 col-5 mb-4">
+                            <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
                                 <div class="card">
                                     @foreach ($medios as $medio)
                                         @if ($piloto->id_imagen == $medio->id)
                                             <img src="{{ asset('assets/uploads/' . $medio->nombre) }}"
-                                                class="card-img-top card-img-bottom" alt="{{ $medio->nombre }}"
-                                                style="width: auto; height: 200px; object-fit: cover;">
+                                                class="card-img-top card-img-bottom img-fluid" alt="{{ $medio->nombre }}"
+                                                style="object-fit: cover; width: 100%; height: 200px;">
                                         @endif
                                     @endforeach
                                 </div>
@@ -187,7 +187,7 @@
                     <div class="row text-center">
                         <div class="col-md-6 mx-auto">
                             <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
-                            <a href="{{ url('pilotos') }}" class="boton-negro btn-block">Pilotos</a>
+                            <a href="{{ url('/conocenos/pilotos') }}" class="boton-negro btn-block">Pilotos</a>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
                                     @if ($equipo->id_imagen == $medio->id)
                                         <img src="{{ asset('assets/uploads/' . $medio->nombre) }}"
                                             class="card-img-top img-fluid" alt="{{ $medio->nombre }}"
-                                            style="height: 300px; object-fit: cover;">
+                                            style="height: 400px; object-fit: cover;">
                                     @endif
                                 @endforeach
                                 <div class="card-body">

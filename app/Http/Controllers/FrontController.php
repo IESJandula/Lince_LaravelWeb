@@ -30,7 +30,7 @@ class FrontController extends Controller
         Visit::create(['visitor_ip' => $visitorIp]); // Registrar la visita
 
         //PASAMOS LOS DATOS A LA VISTA
-        $vehiculos = Vehiculos::all();
+        $vehiculos = Vehiculos::latest()->take(4)->get();
         $equios = Equipo::all();
         $ultimoEquipo = Equipo::latest()->first();
         $pilotos = Pilotos::latest()->take(4)->get();

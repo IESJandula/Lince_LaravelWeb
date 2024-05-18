@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="descripcion">Descripción:</label>
-                            <textarea name="descripcion" id="myeditorinstance" class="form-control" rows="5" required></textarea>
+                            <textarea name="descripcion" id="myeditorinstance" class="form-control" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="row">

@@ -35,7 +35,7 @@ class EquiposController extends Controller
     //VISTA PARA AÑADIR UN NUEVO EQUIPO
     public function newEquipo(Request $request)
     {
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
         return view('backend.nuevoEquipo', compact('medios'));
     }
 
@@ -73,7 +73,7 @@ class EquiposController extends Controller
     public function editEquipo(Request $request, $id)
     {
         $equipo = Equipo::find($id);
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
         return view('backend.editEquipos', compact('equipo','medios'));
     }
 

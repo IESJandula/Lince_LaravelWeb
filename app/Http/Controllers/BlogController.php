@@ -18,7 +18,7 @@ class BlogController extends Controller
     //VISTA PARA AÑADIR UNA NUEVA ENTRADA DE BLOG
     public function newEntrada(Request $request)
     {
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
 
         return view('backend.nuevoBlog', compact('medios'));
     }
@@ -55,7 +55,7 @@ class BlogController extends Controller
     //VISTA PARA EDITAR UNA ENTRADA DE BLOG
     public function editMedio(Request $request, $id)
     {
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
         $entrada = Blog::find($id);
         return view('backend.editBlog', compact('medios', 'entrada'));
     }

@@ -31,7 +31,7 @@ class VehiculosController extends Controller
     //VISTA PARA AÑADIR UN NUEVO VEHICULO
     public function newVehiculo(Request $request)
     {
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
         return view('backend.nuevoVehiculo', compact('medios'));
     }
 
@@ -100,7 +100,7 @@ class VehiculosController extends Controller
     //VISTA PARA EDITAR UN VEHICULO
     public function editVehiculo(Request $request, $id)
     {
-        $medios = Medios::all();
+        $medios = Medios::all()->reverse();
         $entrada = Vehiculos::find($id);
         return view('backend.editVehiculo', compact('medios', 'entrada'));
     }

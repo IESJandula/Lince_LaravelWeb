@@ -11,7 +11,7 @@
             <div class="row mb-4 justify-content-center">
                 @foreach ($chunk as $vehiculo)
                     <div class="col-md-4">
-                        <div class="card mb-5">
+                        <div class="card mb-5" style="height: 100%;">
                             @foreach ($medios as $medio)
                                 @if ($vehiculo->id_imagen == $medio->id)
                                     <img src="{{ asset('assets/uploads/' . $medio->nombre) }}"
