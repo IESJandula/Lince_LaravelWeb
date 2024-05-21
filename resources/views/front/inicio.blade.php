@@ -14,7 +14,7 @@
                     Desarrollamos un proyecto educativo consistente en el diseño, construcción, pruebas y
                     conducción de vehículos ecológicos con los que participamos en competiciones de vehículos eficientes de
                     bajo consumo. El equipo está formado por profesores y alumnos de 1º de Bachillerato de Ciencias y
-                    Tecnología del I.E.S. "Jándula" de Andújar (Jaén) que cursan la asignatura Tecnología Industrial.
+                    Tecnología del I.E.S. "Jándula" de Andújar (Jaén) que cursan la asignatura Tecnología e Ingeniería.
                 </p>
                 <div class="row">
                     <div class="col-md-8">
