@@ -170,8 +170,9 @@
                 <div class="form-group p-4">
                     <div class="row">
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-success"><i class="menu-icon fa-solid fa-floppy-disk"></i>
-                                Guardar</button>
+                            <button type="submit" class="btn btn-primary"><i
+                                class="menu-icon fa-solid fa-floppy-disk"></i>
+                            Actualizar</button>
                         </div>
                         <div class="col-md-2">
                             <a href="{{ url('/entradas-vehiculos') }}" class="btn btn-danger"><i

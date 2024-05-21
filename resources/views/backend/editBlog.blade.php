@@ -16,6 +16,11 @@
                 <li class="menu-item active open">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-4">
+                                <p class="alert alert-warning fs-6"><i class="fa-solid fa-circle-info"></i> Debe de volver a seleccionar las imágenes</p>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3">
                                 <a href="#" class="btn btn-primary" onclick="mostrarOcultarMenu('menuUbicaciones1')">
                                     <i class="menu-icon fa-solid fa-image"></i>
@@ -26,7 +31,7 @@
                                 <div class="" id="informacion1"></div>
                             </div>
                             <div class="col-md-3 d-flex align-items-center justify-content-start">
-                                <p>(Obligatoria)</p>
+                                <p>*Obligatoria</p>
                             </div>
                         </div>
                     </div>
@@ -73,7 +78,7 @@
                                 <div class="" id="informacion2"></div>
                             </div>
                             <div class="col-md-3 d-flex align-items-center justify-content-start">
-                                <p>(No obligatoria)</p>
+                                <p>Opcional</p>
                             </div>
                         </div>
                     </div>
@@ -120,7 +125,7 @@
                                 <div class="" id="informacion3"></div>
                             </div>
                             <div class="col-md-3 d-flex align-items-center justify-content-start">
-                                <p>(No obligatoria)</p>
+                                <p>Opcional</p>
                             </div>
                         </div>
                     </div>

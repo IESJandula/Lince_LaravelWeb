@@ -68,7 +68,7 @@ class BlogController extends Controller
             'titulo' => 'required',
             'slug' => 'required',
             'descripcion' => 'required',
-            'id_imagen' => 'required',
+            'id_imagen' => 'nullable',
             'id_imagen_2' => 'nullable',
             'id_imagen_3' => 'nullable',
             'fecha_publicacion' => 'required'
