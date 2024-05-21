@@ -235,7 +235,7 @@
 
             if (distance < 0) {
                 clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "The time is now!";
+                document.getElementById("countdown").innerHTML = "<a href='{{ url('https://priceless-heisenberg.194-164-171-3.plesk.page/') }}' class='mb-5 text-white' target='_blank'><i class='fa-solid fa-circle text-danger'></i> En directo </a>";
                 // Puedes agregar aquí acciones adicionales cuando la fecha límite expire
             }
         }

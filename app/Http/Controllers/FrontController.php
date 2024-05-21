@@ -128,7 +128,7 @@ class FrontController extends Controller
     public function verPilotos(Request $request)
     {
         //PASAMOS LOS DATOS A LA VISTA
-        $pilotos = Pilotos::orderBy('id', 'DESC')->paginate(8);
+        $pilotos = Pilotos::orderBy('id', 'DESC')->paginate(10);
         $medios = Medios::all();
         return view('front.pilotos', compact('pilotos','medios'));
     }

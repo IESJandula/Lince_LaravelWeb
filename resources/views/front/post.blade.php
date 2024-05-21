@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <!--GALERIA DE IMAGENES-->
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-md-6">
                                 @foreach ($medios as $medio)
                                     @if ($blog->id_imagen_2 == $medio->id)
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="row text-left">
-                            <div class="col-md-12 mx-auto mb-3">
+                            <div class="col-md-12 mx-auto mb-3 mt-4">
                                 <!-- Puedes ajustar el tamaño del contenedor según tus necesidades -->
                                 <a href="{{ url('blog') }}" class="boton-blanco-inicio mt-4"><i class="menu-icon fa-solid fa-arrow-left"></i> Volver</a>
                             </div>
